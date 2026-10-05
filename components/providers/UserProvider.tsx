@@ -1,26 +1,27 @@
+//components/providers/UserProvider.tsx
 "use client";
 
-import { supabaseClient } from "@/lib/supabase/client";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
-export const UserContext = createContext(null);
+type UserContextValue = {
+  userId: string | null;
+  setUserId: (id: string | null) => void;
+};
 
-export default function UserProvider({ children }) {
-  const [user, setUser] = useState(null);
+const UserContext = createContext<UserContextValue | null>(null);
 
-  useEffect(() => {
-    supabaseClient.auth.getUser().then(({ data }) => {
-      setUser(data?.user ?? null);
-    });
+export function UserProvider({ children }: { children: React.ReactNode }) {
+  const [userId, setUserId] = useState<string | null>(null);
 
-    const { data: listener } = supabaseClient.auth.onAuthStateChange(
-      (_event, session) => {
-        setUser(session?.user ?? null);
-      }
-    );
+  return (
+    <UserContext.Provider value={{ userId, setUserId }}>
+      {children}
+    </UserContext.Provider>
+  );
+}
 
-    return () => listener.subscription.unsubscribe();
-  }, []);
-
-  return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
+export function useUser() {
+  const ctx = useContext(UserContext);
+  if (!ctx) throw new Error("useUser must be used inside UserProvider");
+  return ctx;
 }

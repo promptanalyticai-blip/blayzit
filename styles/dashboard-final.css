@@ -1,0 +1,145 @@
+/* MODAL */
+.dashboard-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeOverlay 0.2s ease-out;
+}
+
+@keyframes fadeOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.dashboard-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 420px;
+  animation: fadeModal 0.25s ease-out;
+}
+
+@keyframes fadeModal {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dashboard-modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.dashboard-modal-body {
+  margin-bottom: 1rem;
+}
+
+.dashboard-modal-close {
+  background: #0ea5e9;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* TABS */
+.dashboard-tabs-header {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.dashboard-tab-btn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: #e2e8f0;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #334155;
+}
+
+.dashboard-tab-btn.active {
+  background: #0ea5e9;
+  color: white;
+}
+
+.dashboard-tabs-content {
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+/* CHART WRAPPER */
+.dashboard-chart-wrapper {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.dashboard-chart-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.dashboard-chart-body {
+  min-height: 200px;
+}
+
+/* EMPTY STATE */
+.dashboard-empty-state {
+  text-align: center;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.dashboard-empty-state h3 {
+  font-size: 20px;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-empty-state p {
+  font-size: 15px;
+  color: #475569;
+  margin-bottom: 1rem;
+}
+
+.dashboard-empty-action {
+  background: #0ea5e9;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* DARK MODE */
+.dark .dashboard-modal {
+  background: #1e293b;
+  color: #f1f5f9;
+}
+
+.dark .dashboard-tabs-content {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark .dashboard-chart-wrapper {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark .dashboard-empty-state {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}

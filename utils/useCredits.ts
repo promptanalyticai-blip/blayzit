@@ -1,22 +1,19 @@
-import { createServerClient } from "@/utils/createServerClient";
+//utils/useCredits.ts
+"use client";
 
-export async function useCredits(userId: string, amount: number) {
-  const supabase = createServerClient();
+import { useEffect, useState } from "react";
+import { getCredits } from "./getCredits";
 
-  const { data: current } = await supabase
-    .from("credits")
-    .select("credits")
-    .eq("user_id", userId)
-    .single();
+export function useCredits(userId: string) {
+  const [credits, setCredits] = useState<number>(0);
 
-  if (!current || current.credits < amount) {
-    return { success: false, error: "Sin créditos suficientes" };
-  }
+  useEffect(() => {
+    async function load() {
+      const c = await getCredits(userId);
+      setCredits(c);
+    }
+    load();
+  }, [userId]);
 
-  await supabase
-    .from("credits")
-    .update({ credits: current.credits - amount })
-    .eq("user_id", userId);
-
-  return { success: true };
+  return credits;
 }

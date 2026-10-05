@@ -1,0 +1,140 @@
+/* ADVANCED UI COMPONENTS — ENTERPRISE */
+
+/* PAGE HEADER */
+.dashboard-page-header {
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-page-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.dashboard-page-header p {
+  font-size: 16px;
+  color: #475569;
+}
+
+/* BREADCRUMBS */
+.dashboard-breadcrumbs {
+  margin-bottom: 1rem;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.dashboard-breadcrumbs a {
+  color: #0ea5e9;
+  text-decoration: none;
+}
+
+.dashboard-breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-current {
+  color: #334155;
+}
+
+.breadcrumb-separator {
+  margin: 0 6px;
+  color: #94a3b8;
+}
+
+/* STATS CARD */
+.dashboard-stats-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: fadeStats 0.25s ease-out;
+}
+
+@keyframes fadeStats {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.stats-icon {
+  font-size: 28px;
+}
+
+.stats-label {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.stats-value {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* TABLE */
+.dashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.dashboard-table th {
+  background: #f1f5f9;
+  padding: 12px;
+  text-align: left;
+  font-size: 14px;
+  color: #334155;
+}
+
+.dashboard-table td {
+  padding: 12px;
+  font-size: 14px;
+  color: #475569;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* DARK MODE */
+.dark .dashboard-page-header h1 {
+  color: #f1f5f9;
+}
+
+.dark .dashboard-page-header p {
+  color: #cbd5e1;
+}
+
+.dark .breadcrumb-current {
+  color: #f1f5f9;
+}
+
+.dark .dashboard-stats-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark .stats-label {
+  color: #cbd5e1;
+}
+
+.dark .stats-value {
+  color: #f1f5f9;
+}
+
+.dark .dashboard-table {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark .dashboard-table th {
+  background: #334155;
+  color: #f1f5f9;
+}
+
+.dark .dashboard-table td {
+  color: #cbd5e1;
+  border-top-color: #334155;
+}

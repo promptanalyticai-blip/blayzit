@@ -1,56 +1,31 @@
-//app/api/company/create/route.ts
+// app/api/company/create/route.ts
 
-import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { NextResponse } from "next/server"
+import { createClient } from "@/lib/supabase/Client"
+
+const supabase = createClient()
 
 export async function POST(req: Request) {
-  try {
-    const { userId, email } = await req.json();
+  const { userId, name } = await req.json()
 
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    );
+  // Crear empresa
+  const { data: company, error } = await supabase
+    .from("companies")
+    .insert({
+      name,
+      owner_id: userId,
+    })
+    .select("*")
+    .single()
 
-    // 1. Crear empresa
-    const { data: company, error: companyError } = await supabase
-      .from("companies")
-      .insert({
-        name: `${email.split("@")[0]} Company`,
-        owner: userId,
-      })
-      .select()
-      .single();
+  if (error) return NextResponse.json({ error: error.message }, { status: 400 })
 
-    if (companyError) throw companyError;
+  // Registrar relación usuario ↔ empresa
+  await supabase.from("users_companies").insert({
+    user_id: userId,
+    company_id: company.id,
+    role: "owner",
+  })
 
-    // 2. Crear workspace inicial
-    const { data: workspace, error: workspaceError } = await supabase
-      .from("workspaces")
-      .insert({
-        company_id: company.id,
-        name: "Workspace Principal",
-      })
-      .select()
-      .single();
-
-    if (workspaceError) throw workspaceError;
-
-    // 3. Asignar rol owner
-    const { error: roleError } = await supabase.from("company_roles").insert({
-      company_id: company.id,
-      user_id: userId,
-      role: "owner",
-    });
-
-    if (roleError) throw roleError;
-
-    return NextResponse.json({
-      success: true,
-      company,
-      workspace,
-    });
-  } catch (error) {
-    return NextResponse.json({ success: false, error }, { status: 500 });
-  }
+  return NextResponse.json(company)
 }

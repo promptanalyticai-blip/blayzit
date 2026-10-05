@@ -1,7 +1,15 @@
-export type AuditAction =
-  | "PROMPT_CREATED"
-  | "PROMPT_UPDATED"
-  | "PROMPT_DELETED"
-  | "ANALYSIS_RUN"
-  | "REPORT_EXPORTED"
-  | "AUTOMATION_TRIGGERED";
+//types/index.ts
+export type DNIPAnalysis = {
+  id: string;
+  input: string;
+  output: string;
+  created_at: string;
+};
+
+export type DNIPEvent = {
+  id: string;
+  company_id: string;
+  type: string;
+  payload: any;
+  created_at: string;
+};

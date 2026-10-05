@@ -1,53 +1,37 @@
 // ui/blayzit/panel-client.tsx
 "use client";
 
-import { useEffect } from "react";
-import { useBlayzitClient } from "./use-blayzit-client";
+import { useState } from "react";
 
-export function BlayzitPanelClient() {
-  const { analisis, analysis, loading } = useBlayzitClient();
-
-  useEffect(() => {
-    analisis();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="p-4 bg-gray-100 rounded">
-        Cargando análisis…
-      </div>
-    );
-  }
-
-  if (!analysis) {
-    return (
-      <div className="p-4 bg-gray-100 rounded">
-        Sin datos disponibles.
-      </div>
-    );
-  }
+export default function PanelClient() {
+  const [panel, setPanel] = useState("overview");
 
   return (
-    <div className="space-y-4 p-4 bg-gray-100 rounded">
-      <h2 className="text-xl font-bold">Panel BLAYZIT (Client)</h2>
+    <div className="p-6 bg-slate-900 rounded-xl border border-slate-800">
+      <h1 className="text-slate-100 text-xl font-semibold mb-4">
+        DNIP Panel Client
+      </h1>
 
-      <div>
-        <p className="font-semibold">Total registros:</p>
-        <p>{analysis.total}</p>
+      <div className="flex gap-4 mb-4">
+        <button
+          onClick={() => setPanel("overview")}
+          className="bg-blue-700 px-4 py-2 rounded text-white"
+        >
+          Overview
+        </button>
+
+        <button
+          onClick={() => setPanel("details")}
+          className="bg-green-700 px-4 py-2 rounded text-white"
+        >
+          Details
+        </button>
       </div>
 
-      <div>
-        <p className="font-semibold">Último prompt:</p>
-        <p>{analysis.ultimoPrompt ?? "Sin datos"}</p>
-      </div>
-
-      <div>
-        <p className="font-semibold">Último resultado:</p>
-        <p>{analysis.ultimoResultado ?? "Sin datos"}</p>
-      </div>
-
-      <pre className="bg-white p-3 rounded text-sm">
-        {JSON.stringify(analysis.items, null, 2)}
+      <pre className="text-slate-400 bg-slate-800 p-4 rounded-xl border border-slate-700">
+        {panel === "overview"
+          ? "DNIP Overview Panel"
+          : "DNIP Detailed Panel"}
       </pre>
     </div>
   );

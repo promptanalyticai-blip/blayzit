@@ -1,0 +1,120 @@
+/* ELEMENTOS ENTERPRISE DEL DASHBOARD */
+
+/* LOGO */
+.dashboard-logo {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* USER MENU */
+.dashboard-user-menu {
+  position: relative;
+}
+
+.user-menu-trigger {
+  background: transparent;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  color: #334155;
+}
+
+.user-menu-dropdown {
+  position: absolute;
+  right: 0;
+  top: 36px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.5rem;
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  animation: fadeMenu 0.2s ease-out;
+}
+
+.user-menu-dropdown a {
+  font-size: 14px;
+  padding: 6px;
+  border-radius: 6px;
+  color: #334155;
+}
+
+.user-menu-dropdown a:hover {
+  background: #e2e8f0;
+}
+
+@keyframes fadeMenu {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* SEARCH */
+.dashboard-search input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+  width: 200px;
+}
+
+/* NOTIFICATIONS */
+.dashboard-notifications {
+  position: relative;
+}
+
+.notifications-trigger {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.notifications-dropdown {
+  position: absolute;
+  right: 0;
+  top: 36px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.8rem;
+  width: 200px;
+  animation: fadeNotif 0.2s ease-out;
+}
+
+@keyframes fadeNotif {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* DARK MODE */
+.dark .user-menu-trigger {
+  color: #cbd5e1;
+}
+
+.dark .user-menu-dropdown {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark .user-menu-dropdown a {
+  color: #cbd5e1;
+}
+
+.dark .user-menu-dropdown a:hover {
+  background: #334155;
+}
+
+.dark .dashboard-search input {
+  background: #1e293b;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+.dark .notifications-dropdown {
+  background: #1e293b;
+  border-color: #334155;
+  color: #cbd5e1;
+}

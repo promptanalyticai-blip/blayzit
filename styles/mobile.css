@@ -1,0 +1,42 @@
+/* OPTIMIZACIÓN MÓVIL BLAYZIT/DNIP */
+
+@media (max-width: 480px) {
+  .login-card {
+    width: 90%;
+    padding: 0.8rem;
+  }
+
+  .logo-inside-card {
+    width: 200px;
+    height: auto;
+  }
+
+  .login-title {
+    font-size: 20px;
+  }
+
+  .login-tagline,
+  .login-branding {
+    font-size: 12px;
+  }
+
+  .oauth-btn {
+    font-size: 13px;
+    padding: 9px;
+  }
+
+  .btn-premium,
+  .btn-secondary {
+    font-size: 15px;
+    padding: 9px;
+  }
+
+  .input-group input {
+    font-size: 14px;
+    padding: 9px;
+  }
+
+  .footer-links {
+    gap: 4px;
+  }
+}

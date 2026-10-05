@@ -1,0 +1,78 @@
+/* COMPONENTES ENTERPRISE DEL DASHBOARD */
+
+/* CONTAINER */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* SECTION */
+.dashboard-section {
+  margin-bottom: 2rem;
+}
+
+.dashboard-section-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #334155;
+}
+
+.dashboard-section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* CARD */
+.dashboard-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  animation: fadeCard 0.25s ease-out;
+}
+
+@keyframes fadeCard {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dashboard-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: #1e293b;
+}
+
+.dashboard-card-body {
+  font-size: 15px;
+  color: #475569;
+}
+
+/* GRID */
+.dashboard-grid {
+  display: grid;
+  gap: 1.2rem;
+}
+
+/* DARK MODE */
+.dark .dashboard-card {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.dark .dashboard-card-title {
+  color: #f1f5f9;
+}
+
+.dark .dashboard-card-body {
+  color: #cbd5e1;
+}
+
+.dark .dashboard-section-title {
+  color: #f1f5f9;
+}
