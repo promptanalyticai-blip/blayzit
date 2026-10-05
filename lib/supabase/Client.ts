@@ -1,16 +1,9 @@
 // lib/supabase/Client.ts (ejemplo base)
-import { createClient } from "@supabase/supabase-js"
+import { createClient as supabaseCreateClient } from "@supabase/supabase-js"
 
-export function createServerClient(accessToken?: string) {
-  return createClient(
+export function createClient() {
+  return supabaseCreateClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      global: {
-        headers: accessToken
-          ? { Authorization: `Bearer ${accessToken}` }
-          : {},
-      },
-    }
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   )
 }
